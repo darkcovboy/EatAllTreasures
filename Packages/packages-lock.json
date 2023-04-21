@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "4823bc58809b17c0c9642c2802476f8357b7d512"
     },
+    "com.agava.yandexgames": {
+      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#11.2.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a209bb61c4d4cb6e404e93aa8c7d2921be8df491"
+    },
     "com.unity.burst": {
       "version": "1.6.6",
       "depth": 0,
@@ -118,6 +125,17 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.probuilder": {
+      "version": "5.0.6",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.3",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.recorder": {
       "version": "3.0.3",
       "depth": 0,
@@ -140,7 +158,7 @@
     },
     "com.unity.settings-manager": {
       "version": "1.0.3",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

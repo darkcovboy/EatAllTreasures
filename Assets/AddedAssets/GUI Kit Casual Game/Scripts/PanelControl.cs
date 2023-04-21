@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace LayerLab
 {
     public class PanelControl : MonoBehaviour
