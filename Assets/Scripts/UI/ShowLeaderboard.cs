@@ -47,6 +47,7 @@ public class ShowLeaderboard : MonoBehaviour
     private void OnEnable()
     {
         PlayerAccount.Authorize();
+        StickyAd.Hide();
         ClearChildren(_itemContainer.transform);
 
         if (PlayerAccount.IsAuthorized == false)
@@ -63,6 +64,11 @@ public class ShowLeaderboard : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        StickyAd.Show();
     }
 
     private void ClearChildren(Transform transform)

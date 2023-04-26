@@ -90,6 +90,16 @@ public class UpgradeElement : MonoBehaviour
         IsInteractable();
     }
 
+    private void OnEnable()
+    {
+        StickyAd.Hide();
+    }
+
+    private void OnDisable()
+    {
+        StickyAd.Show();
+    }
+
     private void IsInteractable()
     {
         if (!IsMaxEnhancement)

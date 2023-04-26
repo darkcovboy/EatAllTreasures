@@ -16,4 +16,9 @@ public class StickyAdShow : MonoBehaviour
     {
         StickyAd.Hide();
     }
+
+    public void Show()
+    {
+        StickyAd.Show();
+    }
 }

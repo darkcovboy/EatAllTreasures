@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Agava.YandexGames;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -114,5 +115,6 @@ public class Player : MonoBehaviour
         _maxDistance = _distanceStartPos;
         OnDistanceChange(_maxDistance);
         _startMoney = _money;
+        StickyAd.Show();
     }
 }

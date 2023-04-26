@@ -13,6 +13,8 @@ public class LanguageDeterminate : MonoBehaviour
     {
         yield return YandexGamesSdk.Initialize();
 
+        StickyAd.Show();
+
         string language = YandexGamesSdk.Environment.i18n.lang;
 
         switch (language)
