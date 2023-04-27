@@ -7,6 +7,12 @@ using Agava.YandexGames.Samples;
 public class SpeedUpgrade : UpgradeElement
 {
     private readonly string _speedCostKey = "SpeedCost";
+    private void Awake()
+    {
+        Cost = PlayerPrefs.GetFloat(_speedCostKey);
+
+        ChangeText();
+    }
 
     public override void Upgrade()
     {
@@ -26,10 +32,5 @@ public class SpeedUpgrade : UpgradeElement
             IsMaxEnhancement = true;
     }
 
-    private void Awake()
-    {
-        Cost = PlayerPrefs.GetFloat(_speedCostKey);
-
-        ChangeText();
-    }
+    
 }

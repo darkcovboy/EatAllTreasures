@@ -8,6 +8,13 @@ public class MuliplierUpgrade : UpgradeElement
 {
     private readonly string _multiplierCostKey = "MultiplierCost";
 
+    private void Awake()
+    {
+        Cost = PlayerPrefs.GetFloat(_multiplierCostKey);
+
+        ChangeText();
+    }
+
     public override void Upgrade()
     {        
         Player.UpgradeMultiplier(Cost, Enhancement);
@@ -24,12 +31,5 @@ public class MuliplierUpgrade : UpgradeElement
 
         if (MaxEnhancement == Player.PointsMultiplier)
             IsMaxEnhancement = true;
-    }
-
-    private void Awake()
-    {
-        Cost = PlayerPrefs.GetFloat(_multiplierCostKey);
-
-        ChangeText();
     }
 }

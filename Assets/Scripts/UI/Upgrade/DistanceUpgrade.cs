@@ -8,6 +8,13 @@ public class DistanceUpgrade : UpgradeElement
 {
     private readonly string _distanceCostKey = "DistanceCost";
 
+    private void Awake()
+    {
+        Cost = PlayerPrefs.GetFloat(_distanceCostKey);
+
+        ChangeText();
+    }
+
     public override void Upgrade()
     {
         Player.UpgradeDistance(Cost, Enhancement);
@@ -26,12 +33,5 @@ public class DistanceUpgrade : UpgradeElement
             IsMaxEnhancement = true;
         else
             IsRewardedVideoShowed = false;
-    }
-
-    private void Awake()
-    {
-        Cost = PlayerPrefs.GetFloat(_distanceCostKey);
-
-        ChangeText();
     }
 }

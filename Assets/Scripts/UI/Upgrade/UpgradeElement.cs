@@ -27,7 +27,19 @@ public class UpgradeElement : MonoBehaviour
     private MoneyCounter _moneyCounter;
 
     private readonly string _maxText = "Max";
-    
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _moneyCounter = FindObjectOfType<MoneyCounter>();
+        Player = FindObjectOfType<Player>();
+    }
+
+    private void Update()
+    {
+        IsInteractable();
+    }
+
     public float GetCost()
     {
         return Cost;
@@ -80,28 +92,6 @@ public class UpgradeElement : MonoBehaviour
     {
         AudioListener.pause = false;
         Time.timeScale = 0;
-    }
-
-    private void Start()
-    {
-        _audioSource = GetComponent<AudioSource>();
-        _moneyCounter = FindObjectOfType<MoneyCounter>();
-        Player = FindObjectOfType<Player>();
-    }
-
-    private void Update()
-    {
-        IsInteractable();
-    }
-
-    private void OnEnable()
-    {
-        StickyAd.Hide();
-    }
-
-    private void OnDisable()
-    {
-        StickyAd.Show();
     }
 
     private void IsInteractable()
