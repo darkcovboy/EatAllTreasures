@@ -24,6 +24,9 @@ public class UpgradeElement : MonoBehaviour
     [SerializeField] private Button AdButton;
 
     private AudioSource _audioSource;
+    private MoneyCounter _moneyCounter;
+
+    private readonly string _maxText = "Max";
     
     public float GetCost()
     {
@@ -82,6 +85,7 @@ public class UpgradeElement : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        _moneyCounter = FindObjectOfType<MoneyCounter>();
         Player = FindObjectOfType<Player>();
     }
 
@@ -104,7 +108,7 @@ public class UpgradeElement : MonoBehaviour
     {
         if (!IsMaxEnhancement)
         {
-            if (Player.Money < Cost)
+            if (_moneyCounter.Money < Cost)
             {
                 if (IsRewardedVideoShowed == false)
                 {
@@ -131,7 +135,7 @@ public class UpgradeElement : MonoBehaviour
             AdButton.gameObject.SetActive(false);
             Button.gameObject.SetActive(true);
             Button.interactable = false;
-            Text.text = "Max";
+            Text.text = _maxText;
         }
     }
 }

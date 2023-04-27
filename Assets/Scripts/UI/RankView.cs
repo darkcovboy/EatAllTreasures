@@ -9,6 +9,7 @@ public class RankView : MonoBehaviour
     [SerializeField] private TMP_Text _rank;
     [SerializeField] private TMP_Text _userName;
     [SerializeField] private TMP_Text _score;
+
     public void Render(int rank, string userName, int score)
     {
         foreach(var obj in _ranks)

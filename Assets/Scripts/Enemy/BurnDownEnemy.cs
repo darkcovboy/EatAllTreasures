@@ -6,6 +6,7 @@ public class BurnDownEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject _afterDiyngParticles;
     [SerializeField] private Enemies _enemys;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out Enemy enemy))

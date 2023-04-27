@@ -18,7 +18,6 @@ public class TongueMovement : MonoBehaviour
     private void Update()
     {
         Vector3 move = new Vector3(_floatingJoystick.Horizontal, 0, _floatingJoystick.Vertical);
-        //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         _characterController.Move(move * Time.deltaTime * _player.Speed);
 
         if (move != Vector3.zero)

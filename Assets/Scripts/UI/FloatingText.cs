@@ -11,6 +11,7 @@ public class FloatingText : MonoBehaviour
     {
         StartCoroutine(OnScaleDecrease());
     }
+
     private void OnDisable()
     {
         StopCoroutine(OnScaleDecrease());

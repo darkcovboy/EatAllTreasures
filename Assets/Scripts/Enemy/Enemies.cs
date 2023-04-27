@@ -16,16 +16,6 @@ public class Enemies : MonoBehaviour
     [SerializeField] private List<GameObject> _enemyPrefabs;
     [SerializeField] private bool _haveSpawnObjectRandomly;
 
-    public void EatEnemy()
-    {
-        _enemiesAte++;
-
-        if (_enemiesAte >= _maxEnemies)
-        {
-            _player.Win();
-        }
-    }
-
     private void Start()
     {
         if (_phaze1.Count > 0)
@@ -54,6 +44,16 @@ public class Enemies : MonoBehaviour
         }
 
         _maxEnemies = Mathf.RoundToInt(_maxEnemies * _percentOfEnemiesToEat);
+    }
+
+    public void EatEnemy()
+    {
+        _enemiesAte++;
+
+        if (_enemiesAte >= _maxEnemies)
+        {
+            _player.Win();
+        }
     }
 
     private void RandomSpawnObjects()

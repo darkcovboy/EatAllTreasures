@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerPrefsConfig : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private MoneyCounter _moneyCounter;
     [SerializeField] private DistanceUpgrade _distanceUpgradeElement;
     [SerializeField] private SpeedUpgrade _speedUpgradeElement;
     [SerializeField] private MuliplierUpgrade _multiplierUpgradeElement;
@@ -27,17 +28,6 @@ public class PlayerPrefsConfig : MonoBehaviour
     private readonly string _speedCostKey = "SpeedCost";
     private readonly string _multiplierCostKey = "MultiplierCost";
     private readonly string _lastLevel = "LastLevel";
-
-    public void SetPrefs()
-    {
-        PlayerPrefs.SetInt(_moneyKey, _player.Money);
-        PlayerPrefs.SetFloat(_speedKey, _player.Speed);
-        PlayerPrefs.SetFloat(_multiplierKey, _player.PointsMultiplier);
-        PlayerPrefs.SetFloat(_distanceCostKey, _distanceUpgradeElement.GetCost());
-        PlayerPrefs.SetFloat(_speedCostKey, _speedUpgradeElement.GetCost());
-        PlayerPrefs.SetFloat(_multiplierCostKey, _multiplierUpgradeElement.GetCost());
-        PlayerPrefs.Save();
-    }
 
     private void Start()
     {
@@ -76,5 +66,16 @@ public class PlayerPrefsConfig : MonoBehaviour
         {
             PlayerPrefs.SetInt(_lastLevel, SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    public void SetPrefs()
+    {
+        PlayerPrefs.SetInt(_moneyKey, _moneyCounter.Money);
+        PlayerPrefs.SetFloat(_speedKey, _player.Speed);
+        PlayerPrefs.SetFloat(_multiplierKey, _player.PointsMultiplier);
+        PlayerPrefs.SetFloat(_distanceCostKey, _distanceUpgradeElement.GetCost());
+        PlayerPrefs.SetFloat(_speedCostKey, _speedUpgradeElement.GetCost());
+        PlayerPrefs.SetFloat(_multiplierCostKey, _multiplierUpgradeElement.GetCost());
+        PlayerPrefs.Save();
     }
 }

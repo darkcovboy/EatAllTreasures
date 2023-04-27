@@ -11,13 +11,6 @@ public class CameraMovement : MonoBehaviour
     private Vector3 _endLevelPosition = new Vector3(-2, 12, -15);
     private bool _isEndOfLevel = false;
 
-    public void WinCameraTransform()
-    {
-        _isEndOfLevel = true;
-        transform.LookAt(_body);
-        _offset = _endLevelPosition;
-    }
-
     private void LateUpdate()
     {
         if (!_isEndOfLevel)
@@ -28,5 +21,12 @@ public class CameraMovement : MonoBehaviour
             position.z = (_player.position + _offset).z;
             transform.position = position;
         }
+    }
+
+    public void WinCameraTransform()
+    {
+        _isEndOfLevel = true;
+        transform.LookAt(_body);
+        _offset = _endLevelPosition;
     }
 }

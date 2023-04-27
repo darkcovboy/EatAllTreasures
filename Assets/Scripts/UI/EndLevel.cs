@@ -11,12 +11,26 @@ using System;
 public class EndLevel : MonoBehaviour
 {
     [SerializeField] private GameObject[] _objectsToClose;
-    [SerializeField] private Player _player;
+    [SerializeField] private MoneyCounter _moneyCounter;
     [SerializeField] private TMP_Text _moneyEarnedText;
     [SerializeField] private Button _button;
     [SerializeField] private int _nextLevel;
 
+    private readonly string _levelKey = "Level";
+
     private delegate void CloseCallback(bool onCloseCallback);
+
+    private void OnEnable()
+    {
+        _button.interactable = false;
+
+        foreach (var obj in _objectsToClose)
+        {
+            obj.SetActive(false);
+        }
+
+        StartCoroutine(FillMoney(_moneyCounter.EndMoney));
+    }
 
     public void LoadLevel()
     {
@@ -40,26 +54,9 @@ public class EndLevel : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        _button.interactable = false;
-
-        if (PlayerAccount.IsAuthorized == true)
-        {
-            Leaderboard.SetScore("EatAllTreusersLeaderbord", _player.Money);
-        }
-
-        foreach (var obj in _objectsToClose)
-        {
-            obj.SetActive(false);
-        }
-
-        StartCoroutine(FillMoney(_player.EndMoney));
-    }
-
     private IEnumerator FillMoney(int end)
     {
-        for(int i= 0; i <= end; i+=PlayerPrefs.GetInt("Level"))
+        for(int i= 0; i <= end; i+=PlayerPrefs.GetInt(_levelKey))
         {
             _moneyEarnedText.text = i.ToString();
             yield return null;

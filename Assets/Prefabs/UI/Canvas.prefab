@@ -477,8 +477,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65.76587, y: -51.23758}
-  m_SizeDelta: {x: 131.8976, y: 102.5021}
+  m_AnchoredPosition: {x: -103.916016, y: -71.78}
+  m_SizeDelta: {x: 208.1979, y: 143.5868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4904823125148788943
 CanvasRenderer:
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _money: {fileID: 3293346653339846860}
-  _player: {fileID: 0}
+  _moneyCounter: {fileID: 0}
 --- !u!1 &1228062579625163105
 GameObject:
   m_ObjectHideFlags: 0
@@ -5165,7 +5165,7 @@ MonoBehaviour:
   - {fileID: 2401138609740148738}
   - {fileID: 6689647285159267424}
   - {fileID: 0}
-  _player: {fileID: 0}
+  _moneyCounter: {fileID: 0}
   _moneyEarnedText: {fileID: 3293346653958865720}
   _button: {fileID: 3293346654623648616}
   _nextLevel: 2
@@ -6052,7 +6052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _template: {fileID: -3125517783890323534, guid: 7edccac74ab8d0a439b8e1af3f65d4f6, type: 3}
   _itemContainer: {fileID: 2421487146197918387}
-  _player: {fileID: 0}
+  _moneyCounter: {fileID: 0}
 --- !u!1 &4691154975988113764
 GameObject:
   m_ObjectHideFlags: 0
@@ -6975,10 +6975,10 @@ RectTransform:
   m_Father: {fileID: 3293346654364763435}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.0656875, y: 0.15400001}
-  m_AnchorMax: {x: 0.88375014, y: 0.6194445}
-  m_AnchoredPosition: {x: -2.1208496, y: 3.5915527}
-  m_SizeDelta: {x: 6.0608063, y: -2.1669006}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -50.62085, y: -118.90845}
+  m_SizeDelta: {x: 1577.0608, y: 500.83313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1936459766102139647
 CanvasRenderer:
