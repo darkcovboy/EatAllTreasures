@@ -6,7 +6,10 @@ using Agava.YandexGames.Samples;
 
 public class DistanceUpgrade : UpgradeElement
 {
+    [SerializeField] private Enemies _enemies;
+
     private readonly string _distanceCostKey = "DistanceCost";
+    private bool _isFirstUpgrade = true;
 
     private void Awake()
     {
@@ -20,8 +23,22 @@ public class DistanceUpgrade : UpgradeElement
         Player.UpgradeDistance(Cost, Enhancement);
         base.Upgrade();
 
+        if(_isFirstUpgrade)
+        {
+            _isFirstUpgrade = false;
+
+            if (_enemies.HaveThirdPhaze == true)
+                _enemies.SpawnLastPhaze();
+        }
+
         if (MaxEnhancement == Player.MaxDistance)
+        {
             IsMaxEnhancement = true;
+
+            if (_enemies.HaveThirdPhaze == true)
+                _enemies.SpawnLastPhaze();
+        }
+            
     }
 
     public override void AdUpgrade()
@@ -29,9 +46,21 @@ public class DistanceUpgrade : UpgradeElement
         Player.UpgradeDistance(0, Enhancement);
         base.AdUpgrade();
 
+        if (_isFirstUpgrade)
+        {
+            _isFirstUpgrade = false;
+
+            if (_enemies.HaveThirdPhaze == true)
+                _enemies.SpawnLastPhaze();
+        }
+
         if (MaxEnhancement == Player.MaxDistance)
+        {
             IsMaxEnhancement = true;
+        }
         else
+        {
             IsRewardedVideoShowed = false;
+        }
     }
 }

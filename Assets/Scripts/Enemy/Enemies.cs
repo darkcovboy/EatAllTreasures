@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemies : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Enemies : MonoBehaviour
     [SerializeField] private List<GameObject> _enemyPrefabs;
     [SerializeField] private bool _haveSpawnObjectRandomly;
 
+    public event UnityAction LastPhazeSpawned;
+    
+    public bool HaveThirdPhaze { get; private set; }
+
     private void Start()
     {
         if (_phaze1.Count > 0)
@@ -30,7 +35,11 @@ public class Enemies : MonoBehaviour
 
         if (_phaze3.Count > 0)
         {
-            _phazes.Add(_phaze3);
+            HaveThirdPhaze = true;
+        }
+        else
+        {
+            HaveThirdPhaze = false;
         }
 
 
@@ -53,6 +62,20 @@ public class Enemies : MonoBehaviour
         if (_enemiesAte >= _maxEnemies)
         {
             _player.Win();
+        }
+    }
+
+    public void SpawnLastPhaze()
+    {
+        int option = Random.Range(0, _phaze3.Count);
+        int enemyPrefabIndex = Random.Range(0, _enemyPrefabs.Count);
+        GameObject gameObject = _enemyPrefabs[enemyPrefabIndex];
+        _phaze3[option].gameObject.SetActive(true);
+
+        for (int i = 0; i < _phaze3[option].childCount; i++)
+        {
+            Instantiate(gameObject, _phaze3[option].GetChild(i).gameObject.transform.position, gameObject.transform.rotation);
+            _maxEnemies++;
         }
     }
 
