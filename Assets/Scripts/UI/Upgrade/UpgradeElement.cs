@@ -25,6 +25,8 @@ public class UpgradeElement : MonoBehaviour
 
     private AudioSource _audioSource;
     private MoneyCounter _moneyCounter;
+    private OffAudio _offAudio;
+    private PlayerPrefsConfig _playerPrefsConfig;
 
     private readonly string _maxText = "Max";
 
@@ -33,6 +35,8 @@ public class UpgradeElement : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _moneyCounter = FindObjectOfType<MoneyCounter>();
         Player = FindObjectOfType<Player>();
+        _offAudio = FindObjectOfType<OffAudio>();
+        _playerPrefsConfig = FindObjectOfType<PlayerPrefsConfig>();
     }
 
     private void Update()
@@ -69,6 +73,7 @@ public class UpgradeElement : MonoBehaviour
         Cost += CostIncrease;
         Cost *= CostInreaseMultiplier;
         Cost = Mathf.RoundToInt(Cost);
+        _playerPrefsConfig.SavePrefsCurrent();
         ChangeText();
     }
 
@@ -84,13 +89,13 @@ public class UpgradeElement : MonoBehaviour
 
     private void OnCloseAd()
     {
-        AudioListener.pause = true;
+        _offAudio.TurnOnSounds();
         Time.timeScale = 1;
     }
 
     private void OnOpenAd()
     {
-        AudioListener.pause = false;
+        _offAudio.TurnOffSounds();
         Time.timeScale = 0;
     }
 

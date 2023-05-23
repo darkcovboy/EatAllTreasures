@@ -17,9 +17,15 @@ public class Enemies : MonoBehaviour
     [SerializeField] private List<GameObject> _enemyPrefabs;
     [SerializeField] private bool _haveSpawnObjectRandomly;
 
+
     public event UnityAction LastPhazeSpawned;
-    
+
+    public int CurrentEnemies => _maxEnemies - _enemiesAte;
+    public bool HaveThirdPhazeSpawned => _haveThirdPhazeSpawned;
+
     public bool HaveThirdPhaze { get; private set; }
+
+    private bool _haveThirdPhazeSpawned = false;
 
     private void Start()
     {
@@ -41,7 +47,6 @@ public class Enemies : MonoBehaviour
         {
             HaveThirdPhaze = false;
         }
-
 
         if (_haveSpawnObjectRandomly)
         {
@@ -71,6 +76,7 @@ public class Enemies : MonoBehaviour
         int enemyPrefabIndex = Random.Range(0, _enemyPrefabs.Count);
         GameObject gameObject = _enemyPrefabs[enemyPrefabIndex];
         _phaze3[option].gameObject.SetActive(true);
+        _haveThirdPhazeSpawned = true;
 
         for (int i = 0; i < _phaze3[option].childCount; i++)
         {

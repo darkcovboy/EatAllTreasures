@@ -34,9 +34,6 @@ public class DistanceUpgrade : UpgradeElement
         if (MaxEnhancement == Player.MaxDistance)
         {
             IsMaxEnhancement = true;
-
-            if (_enemies.HaveThirdPhaze == true)
-                _enemies.SpawnLastPhaze();
         }
             
     }

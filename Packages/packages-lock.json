@@ -8,11 +8,11 @@
       "hash": "e43645cd0e6dabaf9c791247417203c8301502fb"
     },
     "com.agava.yandexgames": {
-      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#11.2.0",
+      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#12.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "a209bb61c4d4cb6e404e93aa8c7d2921be8df491"
+      "hash": "519feb77f6aea1f855d1ff3b301c7dd2176b0f4f"
     },
     "com.unity.burst": {
       "version": "1.6.6",

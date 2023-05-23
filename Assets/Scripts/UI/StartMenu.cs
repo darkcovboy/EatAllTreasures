@@ -21,23 +21,7 @@ public class StartMenu : MonoBehaviour
         else
             _levelToLoad = _firstLevel;
 
-        Action<bool> action = OnCloseCallback;
-        InterstitialAd.Show(OnOpenCallback, action);
-    }
 
-    private void OnOpenCallback()
-    {
-        AudioListener.pause = true;
-        Time.timeScale = 0;
-    }
-
-    private void OnCloseCallback(bool onClose)
-    {
-        if (onClose == true)
-        {
-            SceneManager.LoadScene(_levelToLoad);
-            AudioListener.pause = false;
-            Time.timeScale = 1;
-        }
+        SceneManager.LoadScene(_levelToLoad);
     }
 }

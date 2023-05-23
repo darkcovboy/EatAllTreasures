@@ -25,6 +25,7 @@ public class PlayerPrefsConfig : MonoBehaviour
     private readonly string _multiplierKey = "Multiplier";
     private readonly string _levelNumber = "Level";
     private readonly string _distanceCostKey = "DistanceCost";
+    private readonly string _distanceKey = "Distance";
     private readonly string _speedCostKey = "SpeedCost";
     private readonly string _multiplierCostKey = "MultiplierCost";
     private readonly string _lastLevel = "LastLevel";
@@ -68,12 +69,23 @@ public class PlayerPrefsConfig : MonoBehaviour
         }
     }
 
-    public void SetPrefs()
+    public void SavePrefsEnd()
     {
         PlayerPrefs.SetInt(_moneyKey, _moneyCounter.Money);
         PlayerPrefs.SetFloat(_speedKey, _player.Speed);
         PlayerPrefs.SetFloat(_multiplierKey, _player.PointsMultiplier);
         PlayerPrefs.SetFloat(_distanceCostKey, _distanceUpgradeElement.GetCost());
+        PlayerPrefs.SetFloat(_speedCostKey, _speedUpgradeElement.GetCost());
+        PlayerPrefs.SetFloat(_multiplierCostKey, _multiplierUpgradeElement.GetCost());
+        PlayerPrefs.Save();
+    }
+
+    public void SavePrefsCurrent()
+    {
+        PlayerPrefs.SetInt(_moneyKey, _moneyCounter.Money);
+        PlayerPrefs.SetFloat(_distanceKey, _player.MaxDistance);
+        PlayerPrefs.SetFloat(_speedKey, _player.Speed);
+        PlayerPrefs.SetFloat(_multiplierKey, _player.PointsMultiplier);
         PlayerPrefs.SetFloat(_speedCostKey, _speedUpgradeElement.GetCost());
         PlayerPrefs.SetFloat(_multiplierCostKey, _multiplierUpgradeElement.GetCost());
         PlayerPrefs.Save();

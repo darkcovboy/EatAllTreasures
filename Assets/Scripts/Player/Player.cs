@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     public void Win()
     {
         _mouth.gameObject.SetActive(false);
-        _prefsConfig.SetPrefs();
+        _prefsConfig.SavePrefsEnd();
         _camera.WinCameraTransform();
         _animator.SetBool(_isWinningAnimation, true);
         Vector3 position = transform.position;
@@ -94,11 +94,16 @@ public class Player : MonoBehaviour
     {
         _distanceBlock.transform.position = Vector3.zero;
         _distanceBlock.transform.localPosition = new Vector3(_distanceStartX, _distanceStartY, distance);
+        _maxDistance = distance;
     }
 
     private void SetConfig()
     {
-        _maxDistance = PlayerPrefs.GetFloat(_distanceKey);
+        if(PlayerPrefs.GetFloat(_distanceKey) != _distanceStartPos)
+        {
+            _maxDistance = PlayerPrefs.GetFloat(_distanceKey);
+        }
+        
         _speed = PlayerPrefs.GetFloat(_speedKey);
         _moneyMultiplier = PlayerPrefs.GetFloat(_multiplierKey);
     }

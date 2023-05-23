@@ -15,10 +15,9 @@ public class EndLevel : MonoBehaviour
     [SerializeField] private TMP_Text _moneyEarnedText;
     [SerializeField] private Button _button;
     [SerializeField] private int _nextLevel;
+    [SerializeField] private OffAudio _offAudio;
 
     private readonly string _levelKey = "Level";
-
-    private delegate void CloseCallback(bool onCloseCallback);
 
     private void OnEnable()
     {
@@ -32,6 +31,11 @@ public class EndLevel : MonoBehaviour
         StartCoroutine(FillMoney(_moneyCounter.EndMoney));
     }
 
+    private void OnDisable()
+    {
+        StopCoroutine(FillMoney(_moneyCounter.EndMoney));
+    }
+
     public void LoadLevel()
     {
         Action<bool> action = OnCloseCallback;
@@ -40,7 +44,7 @@ public class EndLevel : MonoBehaviour
 
     private void OnOpenCallback()
     {
-        AudioListener.pause = true;
+        _offAudio.TurnOffSounds();
         Time.timeScale = 0;
     }
 
