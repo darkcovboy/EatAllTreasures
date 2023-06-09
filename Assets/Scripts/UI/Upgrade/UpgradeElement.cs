@@ -89,13 +89,15 @@ public class UpgradeElement : MonoBehaviour
 
     private void OnCloseAd()
     {
-        _offAudio.TurnOnSounds();
+        AudioListener.pause = false;
+        //_offAudio.TurnOnSounds();
         Time.timeScale = 1;
     }
 
     private void OnOpenAd()
     {
-        _offAudio.TurnOffSounds();
+        AudioListener.pause = true;
+        //_offAudio.TurnOffSounds();
         Time.timeScale = 0;
     }
 

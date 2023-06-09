@@ -44,7 +44,7 @@ public class EndLevel : MonoBehaviour
 
     private void OnOpenCallback()
     {
-        _offAudio.TurnOffSounds();
+        AudioListener.pause = true;
         Time.timeScale = 0;
     }
 

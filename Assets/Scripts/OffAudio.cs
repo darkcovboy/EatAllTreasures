@@ -22,11 +22,11 @@ public class OffAudio : MonoBehaviour
     {
         foreach(var audioSource in _audioSources)
         {
-            if(audioSource.enabled == false & IsSoundOn == true)
+            if(audioSource.enabled == false || IsSoundOn == true)
                 audioSource.enabled = true;
         }
 
-        if (_music.enabled == false && IsMusicOn == true)
+        if (_music.enabled == false || IsMusicOn == true)
             _music.enabled = true;
     }
 
@@ -34,11 +34,11 @@ public class OffAudio : MonoBehaviour
     {
         foreach (var audioSource in _audioSources)
         {
-            if (audioSource.enabled == true & IsSoundOn == false)
+            if (audioSource.enabled == true || IsSoundOn == false)
                 audioSource.enabled = false;
         }
 
-        if (_music.enabled == true && IsMusicOn == false)
+        if (_music.enabled == true || IsMusicOn == false)
             _music.enabled = false;
     }
 }
